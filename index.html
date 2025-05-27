@@ -2,37 +2,46 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>租屋風險評估專家系統</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>租屋風險評估專家系統</h1>
-    <p class="author">作者：清大材料系 鄭承恩</p>
+    <h1>🏠 租屋風險評估專家系統</h1>
+    <p>作者：清大材料系 鄭承恩</p>
   </header>
 
   <main>
-    <section id="home">
+    <section id="menu">
       <h2>請選擇你想評估的主題：</h2>
-      <div class="topic-buttons">
-        <button data-topic="legality">🏠 房屋是否合法安全？</button>
-        <button data-topic="contract">📄 租賃契約保障？</button>
-        <button data-topic="rent">💰 租金與費用合理？</button>
-        <button data-topic="environment">🌆 生活機能與環境？</button>
-        <button data-topic="landlord">👤 房東與規則合理？</button>
+      <div class="buttons">
+        <button onclick="startTopic('legality')">房屋是否合法安全？</button>
+        <button onclick="startTopic('contract')">租賃契約有保障嗎？</button>
+        <button onclick="startTopic('rent')">租金與費用清楚合理嗎？</button>
+        <button onclick="startTopic('environment')">生活機能與環境是否合適？</button>
+        <button onclick="startTopic('landlord')">房東與租屋規則是否合理？</button>
       </div>
     </section>
 
-    <div id="questions" style="display: none;"></div>
-    <div id="result"></div>
-  </main>
+    <section id="question-area" style="display: none;">
+      <h2 id="topic-title"></h2>
+      <p id="question-text"></p>
+      <div class="buttons">
+        <button onclick="answer(true)">是</button>
+        <button onclick="answer(false)">否</button>
+      </div>
+      <div class="buttons">
+        <button onclick="goHome()">回首頁</button>
+      </div>
+    </section>
 
-  <footer>
-    <p style="text-align:center; font-size:0.9rem; color:#888; margin-top:3rem;">
-      本系統由清大材料系 鄭承恩 製作，2025 年 &copy; All Rights Reserved.
-    </p>
-  </footer>
+    <section id="result-area" style="display: none;">
+      <p id="result-text"></p>
+      <div class="buttons">
+        <button onclick="goHome()">回首頁</button>
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
