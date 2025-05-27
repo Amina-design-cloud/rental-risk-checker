@@ -1,13 +1,13 @@
 body {
   font-family: "Noto Sans TC", sans-serif;
-  background-color: #EDF7F1;
-  color: #333;
+  background-color: #FDF6F0;
+  color: #3C2F2F;
   margin: 0;
   padding: 0;
 }
 
 header {
-  background-color: #5BA199;
+  background-color: #C78560;
   color: white;
   text-align: center;
   padding: 1.5rem;
@@ -33,7 +33,7 @@ h1, h2 {
 button {
   padding: 0.8rem 1.2rem;
   font-size: 1rem;
-  background-color: #5BA199;
+  background-color: #C78560;
   color: white;
   border: none;
   border-radius: 6px;
@@ -42,5 +42,5 @@ button {
 }
 
 button:hover {
-  background-color: #417C6B;
+  background-color: #A66A49;
 }
