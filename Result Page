@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>租屋風險評估結果</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">租屋風險評估結果</h1>
+    <div id="result-container" class="space-y-6"></div>
+    <div class="mt-8 text-center">
+      <button onclick="window.print()" class="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded hover:bg-blue-700">列印建議清單（PDF）</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const answers = JSON.parse(localStorage.getItem("answers"));
+    const allQuestions = ALL_QUESTIONS; // 來自 data.js，五個主題陣列
+    const resultContainer = document.getElementById("result-container");
+
+    const riskLevel = score => {
+      if (score <= 2) return { level: "低風險", color: "green" };
+      if (score <= 5) return { level: "中風險", color: "yellow" };
+      return { level: "高風險", color: "red" };
+    };
+
+    allQuestions.forEach((group, groupIndex) => {
+      const groupTitle = ["房屋安全與合法性", "租賃契約與法律保障", "租金與額外費用", "生活機能與環境", "房東與居住規範"][groupIndex];
+      const groupAnswers = answers.slice(groupIndex * 5, (groupIndex + 1) * 5);
+      const groupScore = groupAnswers.reduce((sum, a, i) => sum + group[i].options[a].score, 0);
+      const risk = riskLevel(groupScore);
+
+      const suggestions = group.map((q, i) => {
+        const opt = q.options[groupAnswers[i]];
+        return `<div class="mb-4">
+          <p class="font-medium">❓ ${q.q}</p>
+          <p class="text-sm text-gray-700">👉 ${opt.advice}</p>
+          <p class="text-xs text-gray-500 mt-1">📘 法條依據：${opt.law}</p>
+        </div>`;
+      }).join("");
+
+      resultContainer.innerHTML += `
+        <div class="bg-white p-6 rounded-xl shadow border-l-8 border-${risk.color}-500">
+          <h2 class="text-xl font-bold mb-2">${groupTitle}</h2>
+          <p class="mb-4">本主題總分：${groupScore}，風險等級：<span class="font-bold text-${risk.color}-600">${risk.level}</span></p>
+          ${suggestions}
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
