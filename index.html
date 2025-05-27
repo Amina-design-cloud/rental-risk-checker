@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>租屋風險評估系統</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-green-700 text-white p-6 shadow">
+    <h1 class="text-3xl font-bold">租屋風險評估系統</h1>
+    <p class="mt-2 text-sm">快速檢視你的租屋風險，守護安全與權益</p>
+  </header>
+
+  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div onclick="location.href='questions.html?theme=1'" class="bg-white shadow p-6 rounded-2xl cursor-pointer hover:shadow-lg transition">
+      <h2 class="text-xl font-bold mb-2">房屋安全與合法性</h2>
+      <p class="text-sm">建築結構、逃生設備、合法門牌</p>
+    </div>
+    <div onclick="location.href='questions.html?theme=2'" class="bg-white shadow p-6 rounded-2xl cursor-pointer hover:shadow-lg transition">
+      <h2 class="text-xl font-bold mb-2">租賃契約與法律保障</h2>
+      <p class="text-sm">契約內容、押金退還、報稅問題</p>
+    </div>
+    <div onclick="location.href='questions.html?theme=3'" class="bg-white shadow p-6 rounded-2xl cursor-pointer hover:shadow-lg transition">
+      <h2 class="text-xl font-bold mb-2">租金與額外費用</h2>
+      <p class="text-sm">水電費、管理費、收據憑證</p>
+    </div>
+    <div onclick="location.href='questions.html?theme=4'" class="bg-white shadow p-6 rounded-2xl cursor-pointer hover:shadow-lg transition">
+      <h2 class="text-xl font-bold mb-2">生活機能與環境</h2>
+      <p class="text-sm">交通、治安、社區整潔</p>
+    </div>
+    <div onclick="location.href='questions.html?theme=5'" class="bg-white shadow p-6 rounded-2xl cursor-pointer hover:shadow-lg transition">
+      <h2 class="text-xl font-bold mb-2">房東與居住規範</h2>
+      <p class="text-sm">隱私尊重、生活限制、過往糾紛</p>
+    </div>
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 p-4">
+    © 2025 租屋風險專家系統｜開發者：清大材料系 鄭承恩
+  </footer>
+</body>
+</html>
